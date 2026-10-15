@@ -14,17 +14,12 @@ default skin_details = "null"
 default hair_style = 1 # 10 for now sigh
 default hair_color = 1 #adjust default for slider
 
-default eye_shape = 1 # 3
+default eye_shape = 1 # 3 types
 default eye_color = 1 #adjust default for slider
 
 default casual_shirt = 1 # 4 types for now, 2 colorways for each, account for bodytype
 default work_shirt = 1
 
-default casual_bottom = 1 # 3 types for now, 3 colorways for each, account for bodytype
-default work_bottom = 1
-    
-default casual_shoes = 1 # 3 types for now, 3 colorways for each
-default work_shoes = 1
 
 default accessories = "null"
 default bag = "null"
