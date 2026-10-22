@@ -50,11 +50,26 @@ init python:
         )
     
     ## IMAGE PATHS
-    def clothing_path(outfit, piece, choice, color):
+    def clothing_path(clothing, occasion, choice, color):
         return (
-        "images/characterCustomization/"
-        "{}/{}/{}_{}_{}.jpg" # change to .png once assets are ready !!
+            "images/characterCustomization/"
+            "{}/{}/{}_{}_{}.jpg" # change to .png once assets are ready !!
         ).format(
-            outfit,
-            
+            clothing,
+            occasion,
+            bodyType,
+            choice,
+            color
         )
+    
+    def thumbnail_path(clothing, occasion, choice): 
+        return (
+            "images/characterCustomization/"
+            "thumbnails/{}/{}_{}.png"
+        ).format(
+            clothing, 
+            occasion,
+            choice
+        )
+
+    ## PLAYER LAYERS
