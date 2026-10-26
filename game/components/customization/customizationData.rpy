@@ -5,6 +5,7 @@ default pronouns = "she/her" # (she/her/hers), (he/him/his), (they/them/theirs),
 default customSubject = ""
 default customObject = ""
 default customPossessive = ""
+default customPlural = False
 default pluralVerb = False
 
 default bodyType = "Slender" # slender, curvy, broad, lanky
@@ -23,17 +24,11 @@ default eyeHue = 0.07
 default eyeSaturation = 0.67
 default eyeBrightness = 0.34
 
-default casualShirt = 1 # 4 types for now, 2 colorways for each, account for bodytype
-default casualShirtColor = 1
+default shirt = 1 # 4 types for now, 2 colorways for each, account for bodytype
+default shirtColor = 1
 
-default workShirt = 1
-default workShirtColor = 1
-
-default casualBottoms = 1 #3 types for now, 3 colorways for each, account for bodytype
-default casualBottomsColor = 1
-
-default workBottoms = 1 
-default workBottomsColor = 1
+default bottoms = 1 #3 types for now, 3 colorways for each, account for bodytype
+default bottomsColor = 1
 
 default accessories = None # 10 different accessories
 default bag = None # 4 different bags
@@ -64,19 +59,12 @@ init python:
         "#130703"
     )
 
-    OUTFIT_COUNTS = (
-        "casual": {
+    OUTFIT_COUNTS = {
             "tops": 4,
             "bottoms": 3,
             "top_colors": 2,
             "bottom_colors": 3,
-        },
+            "accessories": 10,
+            "bags": 4
 
-        "work": {
-            "tops": 4,
-            "bottoms": 3,
-            "top_colors": 2,
-            "bottom_colors": 3,
-        },
-
-    )
+    }

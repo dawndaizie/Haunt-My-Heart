@@ -20,14 +20,14 @@ init python:
         return "#{:02x}{:02x}{:02x}".format(*channels)
 
     def skin_hex(position):
-        position = max(0.0. min(1.0, position))
+        position = max(0.0, min(1.0, position))
         scaled = position * (len(SKIN_PALETTE) - 1)
 
         index = min(int(scaled), len(SKIN_PALETTE) - 2)
         fraction = scaled - index
 
         first = hex_to_rgb(SKIN_PALETTE[index])
-        second hex_to_rgb(SKIN_PALETTE[index + 1])
+        second = hex_to_rgb(SKIN_PALETTE[index + 1])
 
         mixed = tuple(
             a + (b - a) * fraction
@@ -50,26 +50,134 @@ init python:
         )
     
     ## IMAGE PATHS
-    def clothing_path(clothing, occasion, choice, color):
+    def clothing_path(piece, choice, color):
         return (
-            "images/characterCustomization/"
-            "{}/{}/{}_{}_{}.jpg" # change to .png once assets are ready !!
+            "images/characterCustomization/clothes/{}/{}{}_{}.jpg"
+            # change to .png once assets are ready !!
         ).format(
-            clothing,
-            occasion,
             bodyType,
+            piece,
             choice,
             color
         )
     
-    def thumbnail_path(clothing, occasion, choice): 
+    def thumbnail_path(piece, choice): 
         return (
             "images/characterCustomization/"
-            "thumbnails/{}/{}_{}.png"
+            "thumbnails/{}_{}.png"
         ).format(
-            clothing, 
-            occasion,
+            piece,
             choice
         )
 
     ## PLAYER LAYERS
+    def mc_layers():
+
+        root = "images/characterCustomization"
+
+        skin = skin_hex(skinColor)
+
+        hair = hsv_hex(
+            hairHue,
+            hairSaturation,
+            hairBrightness
+        )
+
+        eyes = hsv_hex(
+            eyeHue,
+            eyeSaturation,
+            eyeBrightness
+        )
+
+        return [
+            (
+                root + "/base/base{}.jpg".format(bodyType), #change to .png
+                skin
+            ),
+
+            (
+                root + "/faceShape/face{}.jpg".format(headShape), #change to .png
+                skin
+            ),
+
+            (
+                clothing_path(
+                    "bottom",
+                    bottoms,
+                    bottomsColor
+                ),
+                None
+            ),
+
+            (
+                clothing_path(
+                    "top",
+                    shirt,
+                    shirtColor
+                ),
+                None
+            ),
+
+            (
+                root + "/eyeShape/eyes{}.jpg".format(eyeShape), #change to .png
+                None
+            ),
+
+            (
+                root + "/eyeShape/irises{}.jpg".format(eyeShape), #change to .png
+                eyes
+            ),
+
+            (
+                root + "/hair/hair{}.jpg".format(hairStyle), #change to .png
+                hair
+            ),
+        ]
+
+
+
+    def mc_displayable():
+
+        parts = []
+
+        for path, tint in mc_layers():
+
+            if not renpy.loadable(path):
+                continue
+
+            if tint is None:
+                layer = path
+            else:
+                layer = Transform(
+                    path,
+                    matrixcolor=TintMatrix(tint)
+                )
+
+            parts.extend([
+                (0, 0),
+                layer
+            ])
+
+        if not parts:
+            return Null(width=467, height=946)
+
+        return Composite(
+            (467, 946),
+            *parts
+        )
+
+
+    def missing_mc_layers():
+        return [
+            path
+            for path, tint in mc_layers()
+            if not renpy.loadable(path)
+        ]
+
+    def mc_dynamic(st, at):
+        return mc_displayable(), None
+
+
+
+image MC = DynamicDisplayable(mc_dynamic)
+    
