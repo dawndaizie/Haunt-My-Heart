@@ -2,7 +2,7 @@
 define p = Character("Pheobe")
 define f = Character("Felix")
 define m = Character("Milo")
-define l = Character("Luka")
+define c = Character("Caius")
 define unknown = Character("???")
 define mc = Character("[name]")
 
@@ -11,14 +11,14 @@ define mc = Character("[name]")
 define r1 = Character("Reporter 1")
 define r2 = Character("Reporter 2")
 define r3 = Character("Reporter 3")
-
+define 
 
 # VARIABLES
 default felixAffinity = 0
 default miloAffinity = 0
-default lukaAffinity = 0
+default caiusAffinity = 0
 default phoebeAffinity = 0
-default exorcismPoints = 0
+default felixYanderePoints = 0
 
 # BACKGROUNDS
 
@@ -55,14 +55,14 @@ label start:
     "{i}But family and friends reconnected. History was uncovered. Technology advanced, alongside our understanding of the human consciousness and vulnerability.{/i}"
     "{i}After many years, many people came to accept ghosthood as a second phase of life.{/i}"
     "{i}But despite it all, there were still some quarrels on both sides.{/i}"
-    "{i}This lead to the creation of the Mortem-Mortal Devision, an organization facilitating the smooth transition and coexistence between humans and ghosts.{/i}"
-    "{i}And as a proud trainee of this depatement, I think we do a good job.{/i}"
+    "{i}This lead to the creation of the Mortem-Mortal Division, an organization facilitating the smooth transition and coexistence between humans and ghosts.{/i}"
+    "{i}And as a proud trainee of this department, I think we do a good job.{/i}"
 
-    "Your useless alarm rings, pulling you away from your monologue. The sun beats through the curtains, illuminating your room in a bright, joyous mood. Perhaps similar to your mood. It's quite infectious, honestly."
+    "Your alarm rings, pulling you away from your monologue. You lie in bed, dreading to come out of the comfy blankets despite your eagerness to go to work."
+    "The sun beats through the curtains, illuminating your room in a bright, joyous mood. For a city so bright, it tends to be just as cold."
     "After getting hired for your dream job 3 months ago, you moved into a new apartment in Lithe - one of the largest ghost cities on the continent. Boxes litter your room, remnants of your childhood home that you have yet tp unpack."
-    "You jump out of bed, unnaturally excited for the day."
+    "You crawl out of bed, going up to the mirror on your wall."
     "{i}Time to get ready for work!{/i}"
-    
 
     jump customize_mc
 
